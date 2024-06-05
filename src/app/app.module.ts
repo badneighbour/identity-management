@@ -15,6 +15,9 @@ import { MatListModule } from '@angular/material/list';
 import {AppMaterialModule} from "./app-material.module";
 import { LdapDetailsComponent } from './ldap-details/ldap-details.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { LdapEditComponent } from './ldap-edit/ldap-edit.component';
+import { LdapAddComponent } from './ldap-add/ldap-add.component';
+import { AlertComponent } from './share/alert/alert.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,9 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     LdapListComponent,
     PageNotFoundComponent,
     NavbarComponent,
-    LdapDetailsComponent
+    LdapEditComponent,
+    LdapAddComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
