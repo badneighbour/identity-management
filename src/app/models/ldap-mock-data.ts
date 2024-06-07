@@ -30,5 +30,20 @@ export const LDAP_USERS: UserLdap[] = [
     dateEmbauche: '2020-02-02',
     publisherId: 2,
     active: true,
+  },
+  {
+    id: 3,
+    login: 'jean.dubois',
+    nom: 'Dubois',
+    prenom: 'Jean',
+    nomComplet: 'Jean Dubois',
+    motDePasse: "1234",
+    mail: 'jeand.dubois@epsi.fr',
+    role: 'ROLE_USER',
+    employeNumero: 2024,
+    employeNiveau: 320,
+    dateEmbauche: '2010-04-04',
+    publisherId: 3,
+    active: true,
   }
 ]

@@ -27,6 +27,7 @@ export class LdapEditComponent extends LdapDetailsComponent{
   }
 
   validateForm(): void {
+    this.processValidateRunning = true;
     console.log('LdapEditComponent - validateForm');
     this.usersService.updateUser(this.getUserFromFormControl()).subscribe({
       next: (value) => {
@@ -44,6 +45,7 @@ export class LdapEditComponent extends LdapDetailsComponent{
   }
 
   private getUser(): void {
+    this.processLoadRunning = true;
     const id = Number(this.route.snapshot.paramMap.get('id'));
 
     if (id === null) {
@@ -53,12 +55,13 @@ export class LdapEditComponent extends LdapDetailsComponent{
 
     this.usersService.getUser(id).subscribe({
     next: (user) => {
+      this.processLoadRunning = false;
       this.user = user;
       this.copyUserToFormControl();
       console.log('LdapEdit getUser', user);
     },
     error: (err) => {
-      this.processValidateRunning = false;
+      this.processLoadRunning = false;
       this.errorMessage = "L'utilisateur n'existe pas !";
       console.error("Obtention utilisateur", err);
       this.snackBar.open("Utilisateur non trouvé !", 'X');
