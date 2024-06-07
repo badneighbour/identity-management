@@ -1,6 +1,6 @@
 import {Router} from "@angular/router";
 import  {Location} from "@angular/common";
-import {UserLdap} from "../models/user-ldap";
+import {UserLdap} from "../../models/user-ldap";
 import {FormBuilder, Validators} from "@angular/forms";
 import {ConfirmValidParentMatcher, passwordMatchingValidator} from "./passwords-validator.directive";
 
@@ -119,7 +119,7 @@ export abstract class LdapDetailsComponent {
       login: this.formGetValue('login'),
       nom: this.formGetValue('nom'),
       prenom: this.formGetValue('prenom'),
-      nomComplet: this.formGetValue('non') + ' ' + this.formGetValue('prenom'),
+      nomComplet: this.formGetValue('nom') + ' ' + this.formGetValue('prenom'),
       mail: this.formGetValue('mail'),
       employeNumero: 1,
       employeNiveau: 1,

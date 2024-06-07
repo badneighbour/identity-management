@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {LdapDetailsComponent} from "../ldap-details/ldap-details.component";
 import {FormBuilder} from "@angular/forms";
-import {UsersService} from "../service/users.service";
+import {UsersService} from "../../service/users.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {MatSnackBar} from "@angular/material/snack-bar";
 
