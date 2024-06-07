@@ -9,6 +9,9 @@ import {LdapEditComponent} from "./ldap-edit/ldap-edit.component";
 import {AppMaterialModule} from "../app-material.module";
 import {BrowserModule} from "@angular/platform-browser";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {HttpClientModule} from "@angular/common/http";
+import {InMemoryUsersService} from "../service/in-memory-users.service";
+import {HttpClientInMemoryWebApiModule} from "angular-in-memory-web-api";
 
 
 @NgModule({
@@ -23,7 +26,11 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     FormsModule,
     ReactiveFormsModule,
     AppMaterialModule,
-    LdapManagementRoutingModule
+    LdapManagementRoutingModule,
+    HttpClientModule,
+    HttpClientInMemoryWebApiModule.forRoot(
+      InMemoryUsersService, {dataEncapsulation: false}
+    )
   ]
 })
 export class LdapManagementModule { }
