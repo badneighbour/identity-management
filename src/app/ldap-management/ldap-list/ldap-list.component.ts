@@ -5,6 +5,7 @@ import {MatPaginator} from "@angular/material/paginator";
 import {MatSlideToggleChange} from "@angular/material/slide-toggle";
 import {UsersService} from "../../service/users.service";
 import {Router} from "@angular/router";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-ldap-list',
@@ -12,7 +13,7 @@ import {Router} from "@angular/router";
   styleUrls: ['./ldap-list.component.css']
 })
 export class LdapListComponent implements OnInit {
-  displayedColumns: String[] = ['nomComplet', 'mail', 'employeNumero'];
+  displayedColumns: String[] = ['supprimer', 'nomComplet', 'mail', 'employeNumero'];
   dataSource = new MatTableDataSource<UserLdap>([]);
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator | null;
@@ -20,7 +21,8 @@ export class LdapListComponent implements OnInit {
 
   constructor(
     private usersService: UsersService,
-    private router: Router
+    private router: Router,
+    private snackBar: MatSnackBar,
     ) {
     this.paginator = null;
   }
@@ -71,6 +73,20 @@ export class LdapListComponent implements OnInit {
         console.log('Navigation has failed!');
       }
     });
+  }
+
+  deleteUser(id:number): void {
+    this.usersService.deleteUser(id).subscribe({
+      next: (value) => {
+        this.snackBar.open('Utilisateur supprimé !', 'X');
+        this.getUsers();
+      },
+      error: (err) => {
+        console.error('Modification utilisateur', err);
+        this.snackBar.open('Utilisateur non supprimé !', 'X');
+      }
+    });
+
   }
 
 }
